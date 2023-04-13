@@ -4,37 +4,39 @@
  */
 package dao;
 
-import factory.ConnectionFactory; 
-import modelo.Usuario; 
-import java.sql.*; 
+import factory.ConnectionFactory;
+import modelo.Usuario;
+import java.sql.*;
 import java.sql.PreparedStatement;
 
 public class UsuarioDAO {
-    Long ID;
-    String NOME;
-    String CPF;
-    String EMAIL;
-    String TELEFONE;
-    
-    public UsuarioDAO(){
+
+    Long id;
+    String nome;
+    String cpf;
+    String email;
+    String telefone;
+    private final Connection connection;
+
+    public UsuarioDAO() {
         this.connection = new ConnectionFactory().getConnection();
     }
-    public void adiciona(Usuario usuario){
-        
-       String sql = "INSERT INTO usuario(NOME,CPF,EMAIL,TELEFONE) VALUES(?,?,?,?)";
-    try{
-        
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setString(1, usuario.getNOME() );
-        stmt.setString(2,usuario.getCPF() );
-        stmt.setString(3, usuario.getEMAIL());
-        stmt.setString(4,usuario.getTELEFONE());
-        stmt.execute();
-        stmt.close();
-        
-    }catch (SQLException u){
-        throw new RuntimeException(u);
-    }     
-    
+
+    public void adiciona(Usuario usuario) {
+
+        String sql = "INSERT INTO usuario(nome,cpf,email,telefone)VALUES(?,?,?,?)";
+        try {
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getCpf());
+            stmt.setString(3, usuario.getEmail());
+            stmt.setString(4, usuario.getTelefone());
+            stmt.execute();
+            stmt.close();
+
+        } catch (SQLException u) {
+            throw new RuntimeException(u);
+        }
     }
 }

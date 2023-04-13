@@ -7,14 +7,11 @@ package factory;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class testaConexao {
-
-    public static void main(String[] args) throws SQLException {
+public class TestaConexao {
+    public static void main(String[] args)throws SQLException{
         Connection connection = new ConnectionFactory().getConnection();
-        System.out.println("conexão aberta!");
+        System.out.println("Conexão aberta!");
         connection.close();
-        
-        
     }
-
+    
 }
