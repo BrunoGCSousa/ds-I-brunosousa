@@ -15,10 +15,12 @@ public class Teste {
         CarroBean cb = new CarroBean();
         CarroDAO cd = new CarroDAO(con);
         
-        cb.setPlaca("ASD1247");
-        cb.setCor("Azul");
-        cb.setDescricao("Carro 3");
-        System.out.println(cd.alterar(cb));
+        cb.setPlaca("AAA1234");
+        cb.setCor("Laranja");
+        cb.setDescricao("Carro 4");
+        cb.setMarca("Volkswagen");
+        cb.setModelo("Gol");
+        System.out.println(cd.inserir(cb));
 
         List<CarroBean> lista = cd.listarTodos();
 
@@ -27,6 +29,8 @@ public class Teste {
                 System.out.println("Placa: " + carro.getPlaca());
                 System.out.println("Cor: " + carro.getCor());
                 System.out.println("Descrição: " + carro.getDescricao());
+                System.out.println("Marca: " + carro.getMarca());
+                System.out.println("Modelo: " + carro.getModelo());
             }
         }
         
