@@ -24,13 +24,22 @@ public class CarroDAO {
     }
 
     public String inserir(CarroBean carro) {
-        String sql = "insert into carro(placa,cor,descricao)values(?,?,?)";
+        String sql = "insert into carro(placa,cor,descricao,modelo,marca,conversivel,janelas,portas,rodas,4x4,porte,blindado)values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ps.setString(1, carro.getPlaca());
             ps.setString(2, carro.getCor());
             ps.setString(3, carro.getDescricao());
+            ps.setString(4, carro.getModelo());
+            ps.setString(5, carro.getMarca());
+            ps.setString(6, carro.getConversivel());
+            ps.setString(7, carro.getJanelas());
+            ps.setString(8, carro.getPortas());
+            ps.setString(9, carro.getRodas());
+            ps.setString(10, carro.getTracao());
+            ps.setString(11, carro.getPorte());
+            ps.setString(12, carro.getBlindado());
             
             if(ps.executeUpdate() > 0){
                 return "Inserido com sucesso.";
@@ -43,14 +52,24 @@ public class CarroDAO {
     }
     
     public String alterar(CarroBean carro){
-        String sql = "update carro set cor = ?,descricao = ?";
+        String sql = "update carro set cor = ?,descricao = ?,modelo = ?, marca = ?, conversivel = ?,janelas = ?, portas = ?, rodas = ?, 4x4 = ?, porte = ?, blindado = ?";
         sql += " where placa = ?";
         
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
+            
             ps.setString(1, carro.getCor());
             ps.setString(2, carro.getDescricao());
-            ps.setString(3, carro.getPlaca());
+            ps.setString(3, carro.getModelo());
+            ps.setString(4, carro.getMarca());
+            ps.setString(5, carro.getConversivel());
+            ps.setString(6, carro.getJanelas());
+            ps.setString(7, carro.getPortas());
+            ps.setString(8, carro.getRodas());
+            ps.setString(9, carro.getTracao());
+            ps.setString(10, carro.getPorte());
+            ps.setString(11, carro.getBlindado());
+            ps.setString(12, carro.getPlaca());
             
             if(ps.executeUpdate() > 0){
                 return "Alterado com sucesso.";
@@ -95,6 +114,15 @@ public class CarroDAO {
                     cb.setPlaca(rs.getString(1));
                     cb.setCor(rs.getString(2));
                     cb.setDescricao(rs.getString(3));
+                    cb.setModelo(rs.getString(4));
+                    cb.setMarca(rs.getString(5));
+                    cb.setConversivel(rs.getString(6));
+                    cb.setJanelas(rs.getString(7));
+                    cb.setPortas(rs.getString(8));
+                    cb.setRodas(rs.getString(9));
+                    cb.setTracao(rs.getString(10));
+                    cb.setPorte(rs.getString(11));
+                    cb.setBlindado(rs.getString(12));
                     listaCarro.add(cb);
                 }
                     return listaCarro;
