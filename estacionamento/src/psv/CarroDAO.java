@@ -7,8 +7,10 @@ package psv;
 import java.sql.*;
 import java.util.*;
 
+//criando a class CarroDAO
 public class CarroDAO {
 
+    // criando a variavel con do tipo Connection
     private Connection con;
 
     public CarroDAO(Connection con) {
@@ -22,7 +24,7 @@ public class CarroDAO {
     public void setCon(Connection con) {
         this.con = con;
     }
-
+//Criando o metodo inserir
     public String inserir(CarroBean carro) {
         String sql = "insert into carro(placa,cor,descricao,modelo,marca,conversivel,janelas,portas,rodas,4x4,porte,blindado)values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -50,7 +52,7 @@ public class CarroDAO {
             return e.getMessage();
         }
     }
-    
+    // criando o metodo alterar
     public String alterar(CarroBean carro){
         String sql = "update carro set cor = ?,descricao = ?,modelo = ?, marca = ?, conversivel = ?,janelas = ?, portas = ?, rodas = ?, 4x4 = ?, porte = ?, blindado = ?";
         sql += " where placa = ?";
@@ -80,7 +82,7 @@ public class CarroDAO {
                     return e.getMessage();
                     }
     }
-    
+    // criando o metodo excluir
     public String excluir(CarroBean carro){
         String sql = "delete from carro where placa = ?";
         
@@ -97,7 +99,7 @@ public class CarroDAO {
             return e.getMessage();
         }
     }
-    
+    //criando o metodo listarTodos
     public List<CarroBean> listarTodos(){
         String sql = "select * from carro";
         
